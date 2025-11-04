@@ -17,7 +17,7 @@ AI analyzes uploaded crop images using OpenAI Vision.
 ### 🖼 Screenshots
 | Task | Screenshot |
 |------|-------------|
-| 1 | ![](task1/screenshots/home.p) |
+| 1 | ![](Screenshot 2025-11-04 195110.png) |
 | 2 | ![](task2/screenshots/chat.png) |
 | 3 | ![](task3/screenshots/admin_dashboard.png) |
 | 4 | ![](task4/screenshots/image_analysis.png) |
