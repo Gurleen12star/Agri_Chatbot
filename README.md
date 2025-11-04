@@ -24,6 +24,8 @@ AI analyzes uploaded crop images using OpenAI Vision.
 
 ---
 
+Running on http://127.0.0.1:5000
+
 ### ⚙️ Run Instructions (for any task)
 ```bash
 cd task4        # or task1 / task2 / task3
