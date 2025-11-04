@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Agri Chatbot – Image Analysis</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="bg">
+  <div class="chat-container">
+    <h2>📷 Image Analysis</h2>
+    <p><a href="/chat">Back to Chat</a> | <a href="/logout">Logout</a></p>
+
+    <form method="post" enctype="multipart/form-data">
+      <input type="file" name="image" accept="image/*" required>
+      <button type="submit">Analyze Image</button>
+    </form>
+
+    {% if img_filename %}
+      <h3>Uploaded Image:</h3>
+      <img src="{{ url_for('static', filename='uploads/' + img_filename) }}" width="300" style="border-radius:10px;">
+    {% endif %}
+
+    {% if result %}
+      <h3>Analysis Result:</h3>
+      <div class="bot-msg" style="white-space: pre-line;">{{ result }}</div>
+    {% endif %}
+  </div>
+</body>
+</html>
