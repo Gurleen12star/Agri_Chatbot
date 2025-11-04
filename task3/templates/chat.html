@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Agri Chatbot – Chat</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="chat-container">
+    <h2>🌾 Agri Chatbot</h2>
+    <p>Welcome {{ username }} | <a href="/logout">Logout</a></p>
+
+    <div id="chat-box">
+      {% for c in chats %}
+        <div class="user-msg">You: {{ c.message }}</div>
+        <div class="bot-msg">Bot: {{ c.response }}</div>
+      {% endfor %}
+    </div>
+
+    <form id="chat-form">
+      <input id="message" name="message" placeholder="Type your message…" required>
+      <select id="lang" name="lang">
+        <option value="en">English</option>
+        <option value="hi">Hindi</option>
+        <option value="pa">Punjabi</option>
+      </select>
+      <button type="submit">Send</button>
+    </form>
+  </div>
+
+  <script>
+  const form = document.getElementById('chat-form');
+  const box = document.getElementById('chat-box');
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const msg = document.getElementById('message').value.trim();
+    const lang = document.getElementById('lang').value;
+    if(!msg) return;
+    box.innerHTML += `<div class='user-msg'>You: ${msg}</div>`;
+    document.getElementById('message').value = '';
+
+    const res = await fetch('/chat', {
+      method: 'POST',
+      body: new URLSearchParams({message: msg, lang}),
+      headers: {'Content-Type':'application/x-www-form-urlencoded'}
+    });
+    const data = await res.json();
+    box.innerHTML += `<div class='bot-msg'>Bot: ${data.response}</div>`;
+    box.scrollTop = box.scrollHeight;
+  });
+  </script>
+</body>
+</html>
