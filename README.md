@@ -43,7 +43,7 @@ By combining AI intelligence with IoT automation, this project demonstrates a sc
 ---
 
 ## 🖼 Screenshots
-
+<img width="772" height="573" alt="Screenshot 2026-04-24 134326" src="https://github.com/user-attachments/assets/edfa4619-74a5-473c-be5c-b3e2600794ec"  width="100%"/>
 <img src="https://github.com/user-attachments/assets/104e31dd-ea73-47b0-959c-411ce10fb48e" width="100%" />
 <img src="https://github.com/user-attachments/assets/3b6aab74-2416-4525-b673-fd75eb5dec7e" width="100%" />
 <img src="https://github.com/user-attachments/assets/98ca8f5e-8611-4be1-b9e4-06948a8e5c33" width="100%" />
@@ -54,12 +54,31 @@ By combining AI intelligence with IoT automation, this project demonstrates a sc
 
 ## ⚙️ How It Works
 
-1. User logs in  
-2. Sends query or uploads image  
-3. Flask backend processes request  
-4. OpenAI generates response  
-5. Response translated (if needed)  
-6. Output shown to user  
+1. User logs in through the web interface  
+2. User interacts with the system by:
+   - Sending a text query, or  
+   - Uploading a crop image  
+
+3. Flask backend processes the request  
+
+4. Based on input:
+   - Text queries → processed using OpenAI Chat API  
+   - Images → analyzed using OpenAI Vision API  
+
+5. AI generates a response and translates it into the selected language (English, Hindi, Punjabi)  
+6. Response is displayed to the user  
+
+7. Meanwhile, IoT sensors (soil moisture, rain, etc.) continuously collect field data  
+8. Microcontroller analyzes sensor data and checks conditions  
+
+9. Based on conditions:
+   - Low moisture → irrigation system activated  
+   - Rain detected → rainwater harvesting triggered  
+   - Pest detected → pesticide control system activated  
+
+10. Sensor data is sent to the IoT cloud platform  
+11. Cloud updates are reflected in the application/dashboard for remote monitoring
+
 
 ---
 
@@ -67,7 +86,7 @@ By combining AI intelligence with IoT automation, this project demonstrates a sc
 
 ```mermaid
 flowchart TD
-    A[User / Farmer] --> B[Web App Interface]
+    A[User Farmer] --> B[Web App Interface]
 
     B --> C{Input Type}
 
@@ -80,11 +99,11 @@ flowchart TD
     F --> H[Generate Response]
     G --> H
 
-    H --> I[Translate (EN / HI / PA)]
+    H --> I[Translate EN HI PA]
     I --> J[Display to User]
 
     %% IoT Agribot Flow
-    K[Soil & Rain Sensors] --> L[Microcontroller]
+    K[Soil and Rain Sensors] --> L[Microcontroller]
     L --> M{Condition Check}
 
     M -->|Low Moisture| N[Activate Irrigation]
@@ -101,32 +120,21 @@ flowchart TD
 ## 🔄 System Architecture
 ```mermaid
 graph LR
-    %% User Layer
-    A[User / Farmer] --> B[Frontend (HTML, CSS, JS)]
+    A[User Farmer] --> B[Frontend HTML CSS JS]
 
-    %% Backend Layer
-    B --> C[Flask Backend (Python)]
+    B --> C[Flask Backend Python]
 
-    %% AI Services
     C --> D[OpenAI Chat API]
     C --> E[OpenAI Vision API]
 
-    %% Database
-    C --> F[(Database - SQLite/MySQL)]
+    C --> F[(Database SQLite MySQL)]
 
-    %% IoT Layer
-    G[Soil Moisture Sensor]
-    H[Rain Sensor]
-    I[Pesticide Control System]
+    G[Soil Moisture Sensor] --> H[Microcontroller Arduino RaspberryPi]
+    I[Rain Sensor] --> H
+    J[Pesticide System] --> H
 
-    G --> J[Microcontroller (Arduino/Raspberry Pi)]
-    H --> J
-    I --> J
+    H --> K[IoT Cloud ThingSpeak Firebase Blynk]
 
-    %% IoT Cloud
-    J --> K[IoT Cloud (ThingSpeak / Firebase / Blynk)]
-
-    %% Integration Back to App
     K --> C
     C --> B
 ```
