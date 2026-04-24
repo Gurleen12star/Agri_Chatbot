@@ -7,10 +7,10 @@
 
 ## ✨ Features
 
-- 💬 Smart agriculture chatbot  
+- 💬 Smart agriculture chatbot with voice support  
 - 🔐 User login & registration  
-- 👨‍💼 Admin dashboard  
-- 🌐 Supports English, Hindi, Punjabi  
+- 👨‍💼 Admin dashboard with Knowledge Base
+- 🌐 Supports English, Hindi, Punjabi plus 32 Regional languages   
 - 📷 AI crop image analysis  
 - 🤖 OpenAI-powered responses  
 
@@ -77,7 +77,10 @@ flowchart TD
     E --> F
 
     F --> G[Translate]
-    G --> H[Display]
+    G --> H[Display] 
+```
+---
+```mermaid
 graph LR
     User --> Frontend
     Frontend --> Flask
@@ -85,6 +88,8 @@ graph LR
     Flask --> OpenAI
     OpenAI --> Flask
     Flask --> Frontend
+```
+---
 
 ##⚙️ Run Locally
 git clone https://github.com/yourusername/agrichatbot.git
@@ -94,14 +99,17 @@ cd task4   # or task1/task2/task3
 pip install -r requirements.txt
 python app.py
 👉 Runs on: http://127.0.0.1:5000
+---
 
-🚀 Future Work
+
+##🚀 Future Work
 📱 Mobile app
 🌱 Better crop detection
-🌍 More languages
 📊 Analytics dashboard
+---
 👨‍💻 Author
-Your Name
+Gurleen Kaur Bedi
+---
 📜 License
 
 MIT License
