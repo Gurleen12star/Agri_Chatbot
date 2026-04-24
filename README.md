@@ -1,5 +1,13 @@
 # 🌾 AgriChatbot – Smart Farming Assistant  
-*(Tasks 1 → 4 Integrated Project)*
+- AgriChatbot is an integrated AI + IoT smart agriculture system designed to assist farmers in making informed, real-time decisions. The project combines a web-based intelligent chatbot with a hardware-driven agribot ecosystem to address key challenges in modern farming such as irrigation management, crop health monitoring, and resource optimization.
+
+On the software side, the system features an AI-powered chatbot built using Flask and OpenAI APIs. It allows users to ask agriculture-related questions, receive intelligent responses, and interact in multiple languages including English, Hindi, and Punjabi. The chatbot also supports image-based analysis, where farmers can upload crop images and receive insights about possible diseases or conditions using computer vision.
+
+On the hardware side, the agribot integrates various sensors such as soil moisture and rain detection to automate farming processes. Based on real-time environmental data, the system can trigger irrigation, manage pesticide spraying, and support rainwater harvesting. These actions help conserve water, reduce manual effort, and improve crop productivity.
+
+The entire system is connected through an IoT cloud platform, enabling remote monitoring and control. Sensor data is continuously uploaded to the cloud, allowing farmers to track field conditions through a dashboard or interface and make better decisions from anywhere.
+
+By combining AI intelligence with IoT automation, this project demonstrates a scalable and practical approach to smart farming, aiming to improve efficiency, sustainability, and accessibility for modern agriculture.
 
 > AI-powered chatbot for farmers with multilingual support and crop image analysis.
 
@@ -12,33 +20,25 @@
 - 👨‍💼 Admin dashboard with Knowledge Base
 - 🌐 Supports English, Hindi, Punjabi plus 32 Regional languages   
 - 📷 AI crop image analysis  
-- 🤖 OpenAI-powered responses  
+- 🤖 OpenAI-powered responses
+- 🌧️ Rainwater harvesting system integrated with soil sensors
+- 💧 Smart irrigation control based on real-time soil moisture data
+- 🧪 Pesticide control system for efficient crop protection
+- 📡 IoT cloud integration for remote monitoring and control
+- 📊 Real-time data tracking and decision making
 
 ---
 
-## 🧩 Modules
-
-### 🟢 Task 1 – Chatbot
-Basic Flask chatbot for queries  
-
-### 🔵 Task 2 – Auth + DB
-Login, register, database + OpenAI  
-
-### 🟡 Task 3 – Admin + Translation
-Admin panel + multilingual chat  
-
-### 🔴 Task 4 – Image Analysis
-Upload images → AI crop insights  
-
----
 
 ## 🛠️ Tech Stack
 
 **Backend:** Python, Flask  
 **Frontend:** HTML, CSS, JavaScript  
 **Database:** SQLite / MySQL  
-**AI:** OpenAI API  
-**Tools:** GitHub, VS Code  
+**AI:** OpenAI API (Chat + Vision)  
+**IoT & Hardware:** Arduino / Raspberry Pi, Soil Moisture Sensor, Rain Sensor, Irrigation System, Pesticide Control  
+**Cloud:** IoT Cloud (ThingSpeak / Firebase / Blynk)  
+**Tools:** GitHub, VS Code, Arduino IDE  
 
 ---
 
@@ -67,49 +67,92 @@ Upload images → AI crop insights
 
 ```mermaid
 flowchart TD
-    A[User Input] --> B[Flask Backend]
-    B --> C{Type}
+    A[User / Farmer] --> B[Web App Interface]
 
-    C -->|Text| D[OpenAI Chat]
-    C -->|Image| E[OpenAI Vision]
+    B --> C{Input Type}
 
-    D --> F[Response]
-    E --> F
+    C -->|Text Query| D[Flask Backend]
+    C -->|Image Upload| E[Image Processing]
 
-    F --> G[Translate]
-    G --> H[Display] 
+    D --> F[OpenAI Chat API]
+    E --> G[OpenAI Vision API]
+
+    F --> H[Generate Response]
+    G --> H
+
+    H --> I[Translate (EN / HI / PA)]
+    I --> J[Display to User]
+
+    %% IoT Agribot Flow
+    K[Soil & Rain Sensors] --> L[Microcontroller]
+    L --> M{Condition Check}
+
+    M -->|Low Moisture| N[Activate Irrigation]
+    M -->|Rain Detected| O[Rainwater Harvesting]
+    M -->|Pest Detected| P[Pesticide Control]
+
+    N --> Q[Update IoT Cloud]
+    O --> Q
+    P --> Q
+
+    Q --> B
 ```
 ---
+## 🔄 System Architecture
 ```mermaid
 graph LR
-    User --> Frontend
-    Frontend --> Flask
-    Flask --> Database
-    Flask --> OpenAI
-    OpenAI --> Flask
-    Flask --> Frontend
+    %% User Layer
+    A[User / Farmer] --> B[Frontend (HTML, CSS, JS)]
+
+    %% Backend Layer
+    B --> C[Flask Backend (Python)]
+
+    %% AI Services
+    C --> D[OpenAI Chat API]
+    C --> E[OpenAI Vision API]
+
+    %% Database
+    C --> F[(Database - SQLite/MySQL)]
+
+    %% IoT Layer
+    G[Soil Moisture Sensor]
+    H[Rain Sensor]
+    I[Pesticide Control System]
+
+    G --> J[Microcontroller (Arduino/Raspberry Pi)]
+    H --> J
+    I --> J
+
+    %% IoT Cloud
+    J --> K[IoT Cloud (ThingSpeak / Firebase / Blynk)]
+
+    %% Integration Back to App
+    K --> C
+    C --> B
 ```
 ---
 
 ##⚙️ Run Locally
-git clone https://github.com/yourusername/agrichatbot.git
-
-cd task4   # or task1/task2/task3
-
+git clone https://github.com/yourusername/Agri_Chatbot.git
+```python
 pip install -r requirements.txt
 python app.py
+```
 👉 Runs on: http://127.0.0.1:5000
 ---
 
 
 ##🚀 Future Work
-📱 Mobile app
-🌱 Better crop detection
-📊 Analytics dashboard
+- 📱 Mobile app
+- 🌱 Better crop detection
+- 📊 Analytics dashboard
 ---
-👨‍💻 Author
-Gurleen Kaur Bedi
+
+##👨‍💻 Author
+- Gurleen Kaur Bedi
+  
 ---
-📜 License
+
+##📜 License
 
 MIT License
