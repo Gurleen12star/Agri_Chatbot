@@ -1,5 +1,5 @@
-# 🌾 FarmAgriChatbot – Smart Farming Assistant with IOT Analysis
--->AgriChatbot is an integrated AI + IoT smart agriculture system designed to assist farmers in making informed, real-time decisions. The project combines a web-based intelligent chatbot with a hardware-driven agribot ecosystem to address key challenges in modern farming such as irrigation management, crop health monitoring, and resource optimization.
+# 🌾 AgriSahayta – Smart Farming Assistant with IOT Monitoring 
+-->AgriCSahayta is an integrated AI + IoT smart agriculture system designed to assist farmers in making informed, real-time decisions. The project combines a web-based intelligent chatbot with a hardware-driven agribot ecosystem to address key challenges in modern farming such as irrigation management, crop health monitoring, and resource optimization.
 
 On the software side, the system features an AI-powered chatbot built using Flask and OpenAI APIs. It allows users to ask agriculture-related questions, receive intelligent responses, and interact in multiple languages including English, Hindi, and Punjabi. The chatbot also supports image-based analysis, where farmers can upload crop images and receive insights about possible diseases or conditions using computer vision.
 
@@ -33,11 +33,11 @@ By combining AI intelligence with IoT automation, this project demonstrates a sc
 ## 🛠️ Tech Stack
 
 **Backend:** Python, Flask  
-**Frontend:** HTML, CSS, JavaScript  
-**Database:** SQLite / MySQL  
-**AI:** OpenAI API (Chat + Vision)  
-**IoT & Hardware:** Arduino / Raspberry Pi, Soil Moisture Sensor, Rain Sensor, Irrigation System, Pesticide Control  
-**Cloud:** IoT Cloud (ThingSpeak / Firebase / Blynk)  
+**Frontend:** Next.JS  
+**Database:** SUPABASE 
+**AI:** OpenAI API (Chat + Vision) + Random Forest and XGBoost 
+**IoT & Hardware:** ESP32, Soil Moisture Sensor, Rain Sensor, Irrigation System, Pesticide Control  
+**Cloud:** IoT Cloud (Firebase and Ubidots)  
 **Tools:** GitHub, VS Code, Arduino IDE  
 
 ---
